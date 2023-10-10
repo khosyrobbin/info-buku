@@ -44,14 +44,17 @@
                                     <a href="{{ asset('uploads/' . $item->gambar) }}"
                                         title="Judul: {{ $item->judul }}<br> Penulis: {{ $item->penulis }}<br> Penerbit: {{ $item->penerbit }}<br> Tanggal Terbit: {{ $item->tanggal_terbit }}"
                                         class="glightbox preview-link mb-4"><i class="bi bi-arrows-angle-expand"></i></a>
-                                    <form action="{{ route('buku.destroy', $item->id) }}" method="POST">
-                                        @csrf
-                                        <a href="{{ route('buku.edit', $item->id) }}"
-                                            class="btn btn-outline-warning">Edit</a>
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-danger"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</button>
-                                    </form>
+                                    @guest
+                                    @else
+                                        <form action="{{ route('buku.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            <a href="{{ route('buku.edit', $item->id) }}"
+                                                class="btn btn-outline-warning">Edit</a>
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</button>
+                                        </form>
+                                    @endguest
                                 </div>
 
                             </div>
