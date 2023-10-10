@@ -12,10 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $bukus = BukuModel::all();
-        return view('layouts.home', compact('bukus'));
+        $buku = BukuModel::all();
+        return view('layouts.home', compact('buku'));
     }
     public function tentang()
     {
@@ -45,6 +45,7 @@ class HomeController extends Controller
         $request->validate([
             'judul' => 'required|string',
             'penerbit' => 'required|string',
+            'penulis' => 'required|string',
             'tanggal_terbit' => 'required|date',
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi gambar
         ]);
@@ -61,6 +62,7 @@ class HomeController extends Controller
         BukuModel::create([
             'judul' => $request->judul,
             'penerbit' => $request->penerbit,
+            'penulis' => $request->penulis,
             'tanggal_terbit' => $request->tanggal_terbit,
             'gambar' => $gambarNama,
         ]);
@@ -97,8 +99,15 @@ class HomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(BukuModel $buku)
     {
-        //
+        if ($buku->gambar) {
+            unlink(public_path('uploads/' . $buku->gambar));
+        }
+
+        $buku->delete();
+
+        return redirect()->route('dataBuku');
     }
+
 }

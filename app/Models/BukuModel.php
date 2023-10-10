@@ -9,9 +9,8 @@ class BukuModel extends Model
 {
     use HasFactory;
     protected $table = 'buku';
-    protected $primaryKey = 'id';
     protected $fillable = [
-        'kode_buku', 'judul', 'penerbit', 'tanggal_terbit',
+        'kode_buku', 'judul', 'penulis', 'penerbit', 'tanggal_terbit', 'gambar',
     ];
     // Method untuk mengisi kolom "kode_buku" secara otomatis
     public static function boot()

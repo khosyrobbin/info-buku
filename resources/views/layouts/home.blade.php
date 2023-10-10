@@ -31,58 +31,34 @@
         <!-- ======= Gallery Section ======= -->
         <section id="gallery" class="gallery">
             <div class="container-fluid">
+
                 <div class="row gy-4 justify-content-center">
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="gallery-item h-100">
-                            <img src="{{ asset('template') }}/assets/img/gallery/gallery-1.jpg" class="img-fluid"
-                                alt="">
-                            <div class="gallery-links d-flex align-items-center justify-content-center">
-                                <a href="{{ asset('template') }}/assets/img/gallery/gallery-1.jpg" title="Gallery 1"
-                                    class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                                <a href="{{ asset('template') }}/gallery-single.html" class="details-link"><i
-                                        class="bi bi-trash"></i></a>
+                    @foreach ($buku as $item)
+                        <div class="col-xl-3 col-lg-4 col-md-6">
+                            <div class="gallery-item h-100">
+
+                                <img src="{{ asset('uploads/' . $item->gambar) }}" class="img-fluid" alt="">
+                                <div class="gallery-links d-flex align-items-center justify-content-center flex-column">
+                                    <span class="custom-text"><strong>"{{ $item->judul }}"</strong></span>
+                                    <span class="custom-text mb-4">{{ $item->penulis }}</></span>
+                                    <a href="{{ asset('uploads/' . $item->gambar) }}"
+                                        title="Judul: {{ $item->judul }}<br> Penulis: {{ $item->penulis }}<br> Penerbit: {{ $item->penerbit }}<br> Tanggal Terbit: {{ $item->tanggal_terbit }}"
+                                        class="glightbox preview-link mb-4"><i class="bi bi-arrows-angle-expand"></i></a>
+                                    <form action="{{ route('buku.destroy', $item->id) }}" method="POST">
+                                        @csrf
+                                        <a href="{{ route('buku.edit', $item->id) }}"
+                                            class="btn btn-outline-warning">Edit</a>
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-danger"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</button>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
-                    </div><!-- End Gallery Item -->
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="gallery-item h-100">
-                            <img src="{{ asset('template') }}/assets/img/gallery/gallery-2.jpg" class="img-fluid"
-                                alt="">
-                            <div class="gallery-links d-flex align-items-center justify-content-center">
-                                <a href="{{ asset('template') }}/assets/img/gallery/gallery-2.jpg" title="Gallery 2"
-                                    class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                                <a href="{{ asset('template') }}/gallery-single.html" class="details-link"><i
-                                        class="bi bi-trash"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Gallery Item -->
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="gallery-item h-100">
-                            <img src="{{ asset('template') }}/assets/img/gallery/gallery-3.jpg" class="img-fluid"
-                                alt="">
-                            <div class="gallery-links d-flex align-items-center justify-content-center">
-                                <span class="custom-text mb-2">Teks Anda di sini</span>
-                                <a href="{{ asset('template') }}/assets/img/gallery/gallery-3.jpg" title="Gallery 3"
-                                    class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                                <a href="{{ asset('template') }}/gallery-single.html" class="details-link"><i
-                                        class="bi bi-trash"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Gallery Item -->
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="gallery-item h-100">
-                            <img src="{{ asset('template') }}/assets/img/gallery/gallery-4.jpg" class="img-fluid"
-                                alt="">
-                            <div class="gallery-links d-flex align-items-center justify-content-center flex-column">
-                                <span class="custom-text mb-2">Teks Anda di sini</span>
-                                <a href="{{ asset('template') }}/assets/img/gallery/gallery-4.jpg" title="Gallery 4"
-                                    class="glightbox preview-link mb-2"><i class="bi bi-arrows-angle-expand"></i></a>
-                                <a href="{{ asset('template') }}/gallery-single.html" class="details-link mb-2"><i
-                                        class="bi bi-trash"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+
             </div>
         </section><!-- End Gallery Section -->
 

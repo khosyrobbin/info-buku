@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('kode_buku');
             $table->string('judul');
             $table->string('penerbit');
+            $table->string('penulis');
             $table->date('tanggal_terbit');
             $table->string('gambar')->nullable();
             $table->timestamps();
