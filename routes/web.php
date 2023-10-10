@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('home', HomeController::class);
 Route::get('/tentang', [App\Http\Controllers\HomeController::class, 'tentang'])->name('tentang');
-
-
-Route::get('/test', function () {
-    return view('layouts.template');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

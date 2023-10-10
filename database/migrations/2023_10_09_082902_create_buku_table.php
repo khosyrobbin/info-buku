@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('penerbit');
             $table->date('tanggal_terbit');
+            $table->string('gambar')->nullable();
             $table->timestamps();
         });
     }

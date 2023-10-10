@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-        <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+        <a href="{{route('home')}}" class="logo d-flex align-items-center  me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
             <!-- <img src="assets/img/logo.png" alt=""> -->
             <i class="bi bi-book"></i>
@@ -24,7 +24,6 @@
                         <li><a href="{{ asset('template') }}/gallery.html">Biografi</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ asset('template') }}/contact.html">Kontak</a></li>
             </ul>
         </nav><!-- .navbar -->
 

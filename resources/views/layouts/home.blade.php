@@ -12,7 +12,15 @@
                         Kami adalah destinasi utama bagi para pecinta buku, penulis, dan pembaca yang haus akan
                         pengetahuan. Di "Info Buku," kami memahami pentingnya buku dalam membentuk pikiran dan
                         menginspirasi perubahan positif dalam hidup Anda.</p>
-                    <a href="{{ asset('template') }}/contact.html" class="btn-get-started">Detail Saya</a>
+
+                    @guest
+                        @if (Route::has('login'))
+                            <a href="{{ route('tentang') }}" class="btn-get-started">Detail Saya</a>
+                        @endif
+                    @else
+                        <a href="{{ route('tentang') }}" class="btn-get-started">Detail Saya</a>
+                        <a href="{{ route('home.create') }}" class="btn btn-outline-success">Tambah Buku</a>
+                    @endguest
                 </div>
             </div>
         </div>

@@ -8,7 +8,8 @@
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-6 text-center">
                         <h2>Tentang</h2>
-                        <p>Merupakan lulusan Politeknik Negeri Malang dengan Program Studi D-IV Teknik Informatika dengan IPK 3.61.</p>
+                        <p>Merupakan lulusan Politeknik Negeri Malang dengan Program Studi D-IV Teknik Informatika dengan
+                            IPK 3.61.</p>
                     </div>
                 </div>
             </div>
@@ -34,7 +35,8 @@
                                     <li><i class="bi bi-chevron-right"></i> <strong>No HP:</strong> <span>0822 3259
                                             8644</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Tempat Tinggal:</strong>
-                                        <span>Banyuwangi</span></li>
+                                        <span>Banyuwangi</span>
+                                    </li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Umur:</strong> <span>22</span></li>
                                     <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong>
                                         <span>khosyrh@gmail.com</span>
@@ -47,4 +49,5 @@
 
             </div>
         </section><!-- End About Section -->
-    @endsection
+    </main>
+@endsection
